@@ -9,7 +9,10 @@ __pycache__/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-meios de comunicação
+meios de comunicação,
+static/
+media/
+project/local_settings.py
 
 # Se o seu processo de compilação inclui a execução de collectstatic, provavelmente você não precisa ou deseja incluir staticfiles/
 # em seu repositório Git. Atualize e descomente a linha a seguir de acordo.
