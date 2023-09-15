@@ -1,8 +1,8 @@
 {% extends 'global/base.html' %}
 {% block content %}
 <dvi class="form-wrapper">
-    <h2>Contatos</h2>
-    <form action="{{ form_action }}" method="post" enctype="multipart/form-data">
+    <h2>Registro</h2>
+    <form action="{{ form_action }}" method="post" >
         {% csrf_token %}
         <div class="form-content">
             {% for field in forms %}
@@ -12,12 +12,6 @@
                     {{ field.errors }}
                     {% if field.help_text %}
                         <p class="help-text">{{ field.help_text }}</p>
-                    {% endif %}
-
-                    {% if field.name == 'picture' and field.value.url %}
-                        <div class="form-group">
-                            <img src="{{field.value.url}}" alt="">
-                        </div>
                     {% endif %}
                     
                 </div>
