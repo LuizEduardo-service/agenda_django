@@ -1,6 +1,39 @@
 {% extends 'global/base.html' %}
 {% block content %}
-<h1>
-    CRIAR CONTATO
-</h1>
+<dvi class="form-wrapper">
+    <h2>Contatos</h2>
+    <form action="{{ form_action }}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-content">
+            {% for field in forms %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{field.label }}</label>
+                    {{ field }}
+                    {{ field.errors }}
+                    {% if field.help_text %}
+                        <p class="help-text">{{ field.help_text }}</p>
+                    {% endif %}
+
+                    {% if field.name == 'picture' and field.value.url %}
+                        <div class="form-group">
+                            <img src="{{field.value.url}}" alt="">
+                        </div>
+                    {% endif %}
+                    
+                </div>
+            {% endfor %}
+        </div>
+        <div class="form-content">
+            <div class="form-group">
+                    {% if form.non_field_errors %}
+                    <div class="message errors">
+                        {{ form.non_field_errors }}
+                    </div>
+                    {% endif %}
+                    <button class="btn" type="submit">Enviar</button>
+                </div>
+            </div>
+
+    </form>
+</dvi>
 {% endblock %}
